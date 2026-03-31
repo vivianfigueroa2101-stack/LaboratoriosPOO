@@ -27,6 +27,10 @@ public class PacienteMascota {
 
     public static String nombreRedVeterinaria = "VetPlus";
 
+    public String getNombreMascota() {
+        return nombreMascota;
+    }
+
     //Metodos
     public LocalDate getFechaProximaVacuna() {
         return fechaProximaVacuna;

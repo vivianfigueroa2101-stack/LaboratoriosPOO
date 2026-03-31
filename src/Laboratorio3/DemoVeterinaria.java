@@ -61,7 +61,7 @@ public class DemoVeterinaria {
                 case 2:
                     System.out.println("\n--- Días para vacuna ---");
                     for (PacienteMascota i : listaPacientes) {
-                        System.out.println("Faltan " + i.DiasParaVacuna() + " días");
+                        System.out.println("Faltan " + i.DiasParaVacuna() + " días para: " + i.getNombreMascota());
                     }
                     break;
 
