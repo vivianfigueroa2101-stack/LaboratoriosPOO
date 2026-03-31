@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class PacienteMascota {
+
     //para registrar cada animal en el sistema
 
     private String nombreMascota;
@@ -24,27 +25,29 @@ public class PacienteMascota {
 
     }
 
-    public static String nombreRedVeterinaria = "Vet Plus";
+    public static String nombreRedVeterinaria = "VetPlus";
 
     //Metodos
     public LocalDate getFechaProximaVacuna() {
         return fechaProximaVacuna;
     }
 
-    public static String ActualizarNombreRed(String nuevoNombre) {
+    public static void ActualizarNombreRed(String nuevoNombre) {
         nombreRedVeterinaria = nuevoNombre;
-        return nuevoNombre;
     }
 
-    public int RestanteVacuna() {
+    public long DiasParaVacuna() {
         long dias = ChronoUnit.DAYS.between(LocalDate.now(), this.fechaProximaVacuna);
-        int restante = (int) dias;
-        return restante;
+        return dias;
     }
 
     @Override
     public String toString() {
-        return nombreMascota + "; " + this.nombreMascota + "; " + this.especie + "; " + this.pesoIdeal + "; " + this.nombreDueño ;
+        return "Mascota: " + nombreMascota +
+                ", Especie: " + especie +
+                ", Peso Ideal: " + pesoIdeal +
+                ", Dueño: " + nombreDueño +
+                ", Red: " + nombreRedVeterinaria;
     }
 
 

@@ -23,8 +23,8 @@ public class DemoVeterinaria {
 
         System.out.println("--- Registro de Nuevos Pacientes ---");
 
-        for (int i = 0; i < listaPacientes.size(); i++) {
-            PacienteMascota paciente = listaPacientes.get(i);
+        for (int i = 0; i < especies.length; i++) {
+
             System.out.println("\nIngrese los datos para la especie de " + especies[i] + ":");
 
             System.out.println("Ingrese nombre de la mascota");
@@ -43,9 +43,9 @@ public class DemoVeterinaria {
         boolean salir = false;
         while (!salir) {
             System.out.println("\n======= MENÚ PRINCIPAL =======");
-            System.out.println("1. ListaPacientes()");
-            System.out.println("2. DíasParaVacuna()");
-            System.out.println("3. ModificarNombre();");
+            System.out.println("1. Listar pacientes");
+            System.out.println("2. Días para la vacuna");
+            System.out.println("3. Actualizar nombre();");
             System.out.println("4. Salir");
             System.out.print("Seleccione una opción: ");
 
@@ -56,17 +56,19 @@ public class DemoVeterinaria {
             switch (opcion) {
                 case 1:
                     System.out.println("\n--- Lista de pacientes ---");
+                    ListarMascotas(listaPacientes);
                     break;
                 case 2:
                     System.out.println("\n--- Días para vacuna ---");
                     for (PacienteMascota i : listaPacientes) {
-                        System.out.println("Especie " + i.especie + ": faltan " + i.RestanteVacuna() + " días.");
+                        System.out.println("Faltan " + i.DiasParaVacuna() + " días");
                     }
                     break;
 
                 case 3:
                     System.out.println("\n--- Actualizar nombre de la red ---");
                     PacienteMascota.ActualizarNombreRed("Letirinaria");
+                    System.out.println("Nombre actualizado a: Letirinaria");
                     break;
 
                 case 4:
