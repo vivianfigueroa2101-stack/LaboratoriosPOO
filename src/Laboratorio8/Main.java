@@ -11,7 +11,6 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        // FECHA ACTUAL
         LocalDate fecha = LocalDate.now();
         String fechaTexto = String.format("%02d_%02d_%d",
                 fecha.getDayOfMonth(),
@@ -21,14 +20,10 @@ public class Main {
         String archivoIngreso = "Ingreso_Empleados_Fecha_" + fechaTexto + ".txt";
         String archivoSalida = "Salida_Empleados_Fecha_" + fechaTexto + ".txt";
 
-        // CONSTANTES DE HORARIO
         LocalTime limiteIngreso = LocalTime.of(8, 30);
         LocalTime limiteSalida = LocalTime.of(17, 0);
 
-        // =========================
-        // REGISTRO DE INGRESO
-        // =========================
-        System.out.println("=== REGISTRO INGRESO ===");
+        System.out.println("...::: REGISTRO INGRESO :::...");
 
         System.out.print("Rut: ");
         String rut = sc.nextLine();
@@ -41,21 +36,16 @@ public class Main {
 
         String lineaIngreso = rut + " | " + nombre + " | " + horaIngreso;
 
-        // VALIDACIÓN ATRASO
         if (horaIngreso.isAfter(limiteIngreso)) {
             lineaIngreso += " | ATRASO";
         }
 
-        // ESCRIBIR ARCHIVO INGRESO
         try (FileWriter fw = new FileWriter(archivoIngreso, true)) {
             fw.write(lineaIngreso + "\n");
         } catch (IOException e) {
             System.out.println("Error al escribir archivo de ingreso");
         }
 
-        // =========================
-        // REGISTRO DE SALIDA
-        // =========================
         System.out.println("=== REGISTRO SALIDA ===");
 
         System.out.print("Hora salida (HH:mm): ");
@@ -63,7 +53,6 @@ public class Main {
 
         String lineaSalida = rut + " | " + nombre + " | " + horaSalida;
 
-        // VALIDACIÓN HORAS EXTRA
         if (horaSalida.isAfter(limiteSalida)) {
 
             Duration extra = Duration.between(limiteSalida, horaSalida);
@@ -74,7 +63,6 @@ public class Main {
             lineaSalida += " | TIEMPO EXTRA: " + horas + "h " + minutos + "m";
         }
 
-        // ESCRIBIR ARCHIVO SALIDA
         try (FileWriter fw = new FileWriter(archivoSalida, true)) {
             fw.write(lineaSalida + "\n");
         } catch (IOException e) {
